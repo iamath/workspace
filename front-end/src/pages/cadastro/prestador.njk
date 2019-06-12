@@ -1,0 +1,103 @@
+{% extends "cadastro/template.njk" %} {% block adicional %}
+<div class="row">
+  <div class="col-6">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Celular"
+        name="celular"
+        id="celular"
+        required
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="CNPJ"
+        name="cnpj"
+        id="cnpj"
+        required
+      />
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <select name="profissao" class="form-control" required>
+    <option disabled selected hidden>Selecione sua profissão</option>
+    <option class="font-weight-bold" disabled>Assistência Técnica</option>
+    <option value="1">&nbsp;Conserto de eletrodomésticos</option>
+    <option value="2">&nbsp;Reparo de Celular</option>
+    <option value="3">&nbsp;Manutenção de Computador/Notebook</option>
+    <option class="font-weight-bold" disabled>Aulas</option>
+    <option value="4">&nbsp;Professor de Música</option>
+    <option value="5">&nbsp;Professor de Dança</option>
+    <option value="6">&nbsp;Professor de Inglês</option>
+    <option value="7">&nbsp;Professor de Matemática</option>
+    <option class="font-weight-bold" disabled>Autos</option>
+    <option value="8">&nbsp;Táxi</option>
+    <option value="9">&nbsp;Carreto</option>
+    <option value="10">&nbsp;Retirada de Entulho</option>
+    <option value="11">&nbsp;Locação para Viagem</option>
+    <option class="font-weight-bold" disabled>Consultoria</option>
+    <option value="12">&nbsp;Consultoria Empresarial</option>
+    <option value="13">&nbsp;Consultoria de Marketing</option>
+    <option value="14">&nbsp;Consultoria de Finanças</option>
+    <option value="15">&nbsp;Consultoria de Recursos Humanos</option>
+    <option class="font-weight-bold" disabled>Design e Tecnologia</option>
+    <option value="16">&nbsp;Criar Site</option>
+    <option value="17">&nbsp;Editar Vídeo</option>
+    <option value="18">&nbsp;Produzir Música</option>
+    <option value="19">&nbsp;Criação de Identidade Visual</option>
+    <option value="20">&nbsp;Impressão Gráfica</option>
+    <option class="font-weight-bold" disabled>Eventos</option>
+    <option value="21">&nbsp;Cantor</option>
+    <option value="22">&nbsp;DJ</option>
+    <option value="23">&nbsp;Buffet</option>
+    <option class="font-weight-bold" disabled>Moda e Beleza</option>
+    <option value="24">&nbsp;Manicure</option>
+    <option value="25">&nbsp;Cabeleireiro(a)</option>
+    <option value="26">&nbsp;Pedicure</option>
+    <option value="27">&nbsp;Maquiador(a)</option>
+    <option class="font-weight-bold" disabled>Reformas</option>
+    <option value="28">&nbsp;Reforma Residencial</option>
+    <option value="29">&nbsp;Eletricista</option>
+    <option value="30">&nbsp;Jardineiro</option>
+    <option value="31">&nbsp;Manutenção Hidráulica</option>
+    <option class="font-weight-bold" disabled>Saúde</option>
+    <option value="32">&nbsp;Dentista</option>
+    <option value="33">&nbsp;Psicólogo</option>
+    <option value="34">&nbsp;Psiquiatra</option>
+    <option value="35">&nbsp;SPA</option>
+    <option class="font-weight-bold" disabled>Serviços Domésticos</option>
+    <option value="36">&nbsp;Limpeza Doméstica</option>
+    <option value="37">&nbsp;Cuidar de Crianças</option>
+  </select>
+</div>
+<hr />
+<div class="form-group">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <img
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+        id="img-profile"
+      />
+      <input
+        type="file"
+        class="form-control-file"
+        id="fileFotoPerfil"
+        name="foto-perfil"
+        accept="image/x-png,image/gif,image/jpeg"
+        required
+      />
+      <label for="fileFotoPerfil">Enviar foto de Perfil</label>
+    </div>
+  </div>
+</div>
+<hr />
+{% endblock adicional %} {% block script %}
+<script src="/assets/js/trocaFoto.js"></script>
+{% endblock %}

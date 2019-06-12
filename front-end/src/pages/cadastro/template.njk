@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/assets/css/cadastro.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+  </head>
+  <body class="bg-gradient">
+    <div class="container">
+      <div class="row flex-column align-items-center">
+        <form
+          class="bg-white shadow rounded px-4 py-4"
+          enctype="multipart/form-data"
+          method="POST"
+        >
+          <h2 class="font-weight-bold text-center">
+            <i class="fas fa-user-plus"></i> Registrar
+          </h2>
+          <hr />
+          <div class="alert" style="display: none" id="msg">
+            <p class="mb-0" id="msg-texto">Mensagem:</p>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nome"
+              name="nome"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="E-Mail"
+              name="email"
+              required
+            />
+          </div>
+          {% block adicional %} {% endblock %}
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Senha"
+              name="senha"
+              minlength="8"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Confirmar Senha"
+              name="confSenha"
+              minlength="8"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+              id="submit"
+              disabled
+            >
+              Registrar
+            </button>
+          </div>
+        </form>
+        <div class="hint-text text-center">
+          Já tem uma conta?
+          <a href="/login">Faça login aqui</a>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% block script %} {%
+    endblock %}
+    <script src="/assets/js/jquery.mask.min.js"></script>
+    <script src="/assets/js/validaMascaraCadastro.js"></script>
+    <script>
+      {% if erro %}
+        $('#msg').slideDown().addClass('alert-danger')
+        $('#msg-texto').text('{{ erro }}')
+      {% elseif sucesso %}
+        $('#msg').slideDown().addClass('alert-success')
+        $('#msg-texto').html('Cadastrado com sucesso! <a href="/login" class="alert-link">Fazer login</a>')
+      {% endif %}
+
+      $('form').submit(() => $('#submit').attr('disabled', 'disabled'))
+    </script>
+  </body>
+</html>

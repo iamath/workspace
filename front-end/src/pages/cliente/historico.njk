@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-6 offset-3 bg-white shadow pt-3 rounded-lg">
+          <h3 class="font-weight-bold">
+            <i class="fas fa-history"></i> Histórico
+          </h3>
+          <hr />
+          {% if pedidos == 404 %}
+          <p class="text-muted">Você ainda não tem pedidos</p>
+          {% else %} {% for pedido in pedidos %}
+          <div class="border rounded-lg px-3 py-3 mb-3">
+            <h5>
+              Pedido #{{ pedido.id }}
+              <span
+                class="badge badge-{% if pedido.status == 'pendente' %}primary
+                {% elif pedido.status == 'concluido' %}success
+                {% elif pedido.status == 'expirado' %}secondary
+                {% elif pedido.status == 'prop. enviada' %}warning
+                {% endif %}"
+              >
+                {{ pedido.status }}
+              </span>
+            </h5>
+            <hr />
+            <table class="table table-borderless mx-0 my-0">
+              <tbody>
+                <tr class="row">
+                  <th class="col-4">Serviço</th>
+                  <td class="col-8">{{ pedido.nome }}</td>
+                </tr>
+                <tr class="row">
+                  <th class="col-4">Data de expiração</th>
+                  <td class="col-8">
+                    {{ pedido.data }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-8 offset-2 bg-white shadow py-3 rounded-lg">
+          <h4 class="font-weight-bold">Proposta #{{ proposta.id }}</h4>
+          <hr />
+          <table>
+            <tbody>
+              <tr>
+                <th class="pr-4">Nome do prestador:</th>
+                <td>{{ proposta.nome_prestador }}</td>
+              </tr>
+              <tr>
+                <th>Preço:</th>
+                <td>R$ {{ proposta.preco }}</td>
+              </tr>
+              <tr>
+                <th>Data proposta:</th>
+                <td>{{ proposta.data }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+          <form
+            action="/cliente/proposta/aceitar/{{ proposta.id }}"
+            method="post"
+            class="d-inline"
+          >
+            <input type="submit" class="btn btn-success" value="Aceitar" id="aceitar" />
+          </form>
+          <form
+            action="/cliente/proposta/recusar/{{ proposta.id }}"
+            method="post"
+            class="d-inline"
+          >
+            <input type="submit" class="btn btn-danger" value="Recusar" id="recusar" />
+          </form>
+
+          <div class="alert alert-primary mt-3 mb-0">
+            <p class="mb-0">
+              Note: Enquanto você não responder a uma proposta seu pedido não
+              estará visível para outros prestadores do site.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+    <script>
+      $('form').submit(() => {
+        $('#aceitar').attr('disabled', 'disabled')
+        $('#recusar').attr('disabled', 'disabled')
+      })
+    </script>
+  </body>
+</html>

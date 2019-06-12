@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>workspace</title>
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+  </head>
+  <body>
+    <div class="navbar navbar-expand navbar-dark" style="z-index: 1000;">
+      <div class="navbar-container">
+        <a class="navbar-brand" href="#">
+          <img src="/assets/img/logo-1.png" />
+        </a>
+        <div class="ml-auto">
+          <a class="btn btn-outline-light" href="/login">
+            Entrar
+          </a>
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#modalCadastro"
+          >
+            <i class="fas fa-clipboard-list"></i> Cadastre-se
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid main">
+      <div class="row h-100 align-items-center">
+        <div class="col-6">
+          <div class="px-5 py-5 text-white">
+            <h1 class="text-center">
+              Seus problemas resolvidos
+            </h1>
+            <p class="text-center mt-5">
+              Procura um emprego? Precisa que alguém realize um serviço para
+              você? Essas 2 opções estão disponíveis no nosso site, crie agora
+              mesmo a sua conta!
+            </p>
+            <div class="row justify-content-center mt-5">
+              <a class="btn btn-success mr-1 mb-2" href="/cadastro/prestador">
+                <i class="fas fa-tools"></i> Quero trabalhar
+              </a>
+              <a class="btn btn-primary ml-1 mb-2" href="/cadastro/cliente">
+                <i class="fas fa-search"></i> Procuro Serviços
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <img src="/assets/img/mac.png" class="landing-img" />
+        </div>
+      </div>
+    </div>
+    {% include "components/modal-cadastro.njk" %} {% include
+    "components/default-scripts.njk" %}
+  </body>
+</html>

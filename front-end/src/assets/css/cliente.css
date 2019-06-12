@@ -1,0 +1,106 @@
+.main {
+  margin: auto;
+  max-width: 1140px;
+  margin-bottom: 50px;
+}
+
+.dropdown-toggle {
+  border-radius: 50px !important;
+}
+
+.notifications {
+  background: #2af598;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 10pt;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.dropdown-toggle .notifications {
+  position: relative;
+  top: -15px;
+  left: -15px;
+  margin-right: -15px;
+}
+
+.categorias {
+  max-height: 400px;
+  overflow: auto;
+  list-style: none;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+}
+
+.categorias li {
+  width: 100%;
+  padding: 3px;
+}
+
+.categorias a {
+  color: #333;
+  text-decoration: none;
+}
+
+.categorias li:hover {
+  background-color: #eee;
+}
+
+.card-img-top {
+  height: 100px;
+  object-fit: cover;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+}
+
+.prev {
+  left: 0;
+  padding-right: 15px;
+}
+
+.next {
+  right: 0;
+  padding-left: 15px;
+}
+
+.servico-img {
+  object-fit: cover;
+  width: 160px;
+  height: 160px;
+}
+
+.servico {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-group-pesquisa {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-pesquisa {
+  display: inline;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-pesquisa {
+  height: 38px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

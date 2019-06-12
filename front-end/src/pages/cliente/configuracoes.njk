@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-8 offset-2 bg-white shadow py-3 rounded-lg">
+          <h4 class="font-weight-bold text-center mb-4">
+            Configurações da conta
+          </h4>
+          <div class="row">
+            <div class="col-6 border-right">
+              <h5 class="font-weight-bold">Dados básicos</h5>
+              <hr />
+              <div class="alert alert-danger" style="display: none" id="erro">
+                Erro: {{ erro }}
+              </div>
+              <form method="POST" action="/cliente/atualizar">
+                <div class="form-group">
+                  <label for="txtEmail">E-Mail</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="txtEmail"
+                    name="email"
+                    value="{{ cookies.email }}"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="txtCelular">Celular</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="txtCelular"
+                    name="celular"
+                    value="{{ cookies.celular }}"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  id="atualizarDados"
+                >
+                  <i class="fas fa-redo-alt"></i> Atualizar
+                </button>
+              </form>
+            </div>
+            <div class="col-6">
+              <h5 class="font-weight-bold">Ações</h5>
+              <hr />
+              <div class="col-6 offset-3 d-flex flex-column">
+                <button
+                  class="btn btn-primary mb-3"
+                  data-toggle="modal"
+                  data-target="#modalSenha"
+                >
+                  <i class="fas fa-key"></i> Alterar senha
+                </button>
+                <button
+                  class="btn btn-danger"
+                  data-toggle="modal"
+                  data-target="#modalExclusao"
+                >
+                  <i class="fas fa-trash"></i> Excluir conta
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalExclusao" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content alert alert-danger"
+          style="background: #f8d7da"
+        >
+          <div class="modal-header">
+            <h5 class="modal-title font-weight-bold">
+              <i class="fas fa-exclamation-triangle"></i> Atenção!
+            </h5>
+          </div>
+          <div class="modal-body">
+            <p class="mb-0">
+              Deseja mesmo excluir sua conta? Não será possível recuperar seus
+              dados após a exclusão!
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <form action="/cliente/excluir" method="post" class="mb-0">
+              <button type="submit" class="btn btn-danger" id="excluirConta">
+                Excluir Conta
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalSenha" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-weight-bold">
+              <i class="fas fa-key"></i> Alterar senha
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form action="/cliente/senha" id="frmSenha" method="post">
+              <div class="form-group">
+                <label for="txtSenha">Nova senha</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="senha"
+                  id="txtSenha"
+                  minlength="8"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <input
+              type="submit"
+              class="btn btn-success"
+              form="frmSenha"
+              value="Atualizar"
+              id="atualizarSenha"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+    <script src="/assets/js/jquery.mask.min.js"></script>
+    <script>
+      $('#txtCelular').mask('(00) 00000-0000', {
+        onChange: () => {
+          $('#atualizarDados').attr('disabled', 'disabled')
+        },
+        onComplete: () => {
+          $('#atualizarDados').removeAttr('disabled')
+        }
+      })
+
+      $('form').submit(() => {
+        $('#excluirConta').attr('disabled', 'disabled')
+        $('#atualizarSenha').attr('disabled', 'disabled')
+        $('#atualizarDados').attr('disabled', 'disabled')
+      })
+
+      {% if erro %}
+        $('#erro').slideDown()
+      {% endif %}
+    </script>
+  </body>
+</html>

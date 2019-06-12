@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        {% include "cliente/sidebar.njk" %}
+        <div class="col-9 px-2">
+          <div class="col-12 bg-white shadow pt-3 rounded-lg">
+            <h3 class="font-weight-bold">Pesquisa</h3>
+            <hr />
+            <div class="row">
+              {% for servico in servicos %}
+              <div class="col-4 d-flex align-items-stretch mb-4">
+                <div class="card">
+                  <img
+                    src="/assets/img/servicos/{{ servico.foto }}"
+                    class="card-img-top"
+                  />
+                  <div
+                    class="card-body d-flex flex-column"
+                    style="justify-content: space-between"
+                  >
+                    <h5 class="card-title font-weight-bold text-center">
+                      {{ servico.nome }}
+                    </h5>
+                    <a
+                      href="/cliente/servico/{{ servico.id }}"
+                      class="btn btn-outline-primary"
+                    >
+                      Detalhes
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+  </body>
+</html>

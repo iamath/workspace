@@ -1,0 +1,28 @@
+{% extends "cadastro/template.njk" %} {% block adicional %}
+<div class="row">
+  <div class="col-6">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Celular"
+        name="celular"
+        id="celular"
+        required
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="CPF"
+        name="cpf"
+        id="cpf"
+        required
+      />
+    </div>
+  </div>
+</div>
+{% endblock adicional %}

@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-8 offset-2 bg-white shadow py-3 rounded-lg">
+          <h4 class="font-weight-bold">Pedido #{{ contrato.id_pedido }}</h4>
+          <hr />
+          <div class="alert alert-success">
+            <p class="mb-0">
+              A proposta foi aceita! O local de realização do serviço e outras
+              demais informações deverão ser realizadas pelo contato de celular
+              do prestador.
+            </p>
+          </div>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th>Serviço:</th>
+                <td>{{ contrato.nome_servico }}</td>
+              </tr>
+              <tr>
+                <th>Data proposta:</th>
+                <td>{{ contrato.data }}</td>
+              </tr>
+              <tr>
+                <th>Preço:</th>
+                <td>R$ {{ contrato.preco }}</td>
+              </tr>
+              <tr>
+                <th>Celular do prestador:</th>
+                <td>{{ contrato.celular_pre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+  </body>
+</html>

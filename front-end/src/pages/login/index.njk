@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div>
+          <form method="POST" class="bg-white rounded-lg shadow-lg px-4 py-4">
+            <h2 class="font-weight-bold text-center">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </h2>
+            <hr />
+            <div class="alert alert-danger" style="display: none" id="erro">
+              Erro: {{ erro }}
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                placeholder="E-Mail"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                name="senha"
+                placeholder="Senha"
+                required
+              />
+            </div>
+            {# <div class="form-group form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="chkConectado"
+              />
+              <label class="form-check-label" for="chkConectado"
+                >Permanecer conectado</label
+              >
+            </div> #}
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" id="submit">
+                Login
+              </button>
+            </div>
+          </form>
+          <div class="hint-text text-center">
+            Não tem uma conta?
+            <a href="" data-toggle="modal" data-target="#modalCadastro"
+              >Crie uma aqui</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/modal-cadastro.njk" %} {% include
+    "components/default-scripts.njk" %}
+    <script>
+      {% if erro %}
+      $('#erro').slideDown()
+      {% endif %}
+
+      $('form').submit(() => $('#submit').attr('disabled', 'disabled'))
+    </script>
+  </body>
+</html>

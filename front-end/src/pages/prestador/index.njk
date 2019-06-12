@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/assets/css/prestador.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+  </head>
+  <body>
+    {% include "prestador/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        {% include "prestador/sidebar.njk" %}
+        <div class="col-9 px-2">
+          <div class="col-12 bg-white shadow py-3 rounded-lg">
+            <h4 class="font-weight-bold">
+              <i class="fas fa-clipboard-list"></i> Pedidos
+            </h4>
+            <hr />
+            <div class="row">
+              {% if pedidos == 404 %}
+              <p class="col text-muted">Não há nenhum pedido no momento</p>
+              {% else %} {% for pedido in pedidos %}
+              <div class="col-4 mb-3">
+                <div class="card">
+                  <div class="card-header pb-0">
+                    <h5 class="font-weight-bold">{{ pedido.nome }}</h5>
+                  </div>
+                  <div class="card-body">
+                    <i class="fas fa-calendar-alt"></i> Data: Até {{ pedido.data }}
+                  </div>
+                  <div class="card-footer">
+                    <a
+                      class="btn btn-outline-primary"
+                      href="/prestador/proposta/{{ pedido.id }}"
+                    >
+                      <i class="far fa-money-bill-alt"></i> Fazer proposta
+                    </a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+    <script src="/assets/js/trocaFoto.js"></script>
+  </body>
+</html>

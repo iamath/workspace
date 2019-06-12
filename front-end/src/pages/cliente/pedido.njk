@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-6 offset-3 bg-white shadow py-3 rounded-lg">
+          <h3 class="font-weight-bold">Pedido realizado!</h3>
+          <hr />
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th>Serviço</th>
+                <td>{{ servico.nome }}</td>
+              </tr>
+              <tr>
+                <th>Data</th>
+                <td>
+                  {% if data == 1 %} O mais rápido possível {% elif data == 2 %}
+                  Até 30 dias {% else %}
+                  {{ data }}
+                  {% endif %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-primary">
+            <p class="mb-0">
+              Seu pedido ficará visível para os prestadores do site. Você
+              receberá uma notificação caso façam uma proposta para você. Caso
+              não haja nenhuma proposta até {{ dataMax }} o pedido será desativado
+              do site.
+            </p>
+          </div>
+          <a href="/cliente" class="btn btn-primary">
+            <i class="fas fa-long-arrow-alt-left"></i> Voltar para o início
+          </a>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %}
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<div class="col-3 px-2">
+  <div class="col-12 bg-white shadow pt-3 px-0 rounded-lg">
+    <div class="row justify-content-center">
+      <a class="profile-pic-link" data-toggle="modal" data-target="#modalFoto">
+        <i class="fas fa-camera text-white fa-2x pt-3"></i>
+        <p class="text-white">Alterar Foto</p>
+      </a>
+      <img
+        src="/upload/{{ cookies.foto }}"
+        class="rounded-circle profile-pic"
+      />
+    </div>
+    <h4 class="font-weight-bold text-center my-3 px-3">{{ cookies.nome }}</h4>
+    <ul class="side-menu">
+      <li>
+        <a href="/prestador" class="{{ home }}">
+          <i class="fas fa-clipboard-list mr-2"></i>
+          Pedidos
+        </a>
+      </li>
+      <li>
+        <a href="/prestador/notificacoes" class="{{ notif }}">
+          <i class="fas fa-bell mr-2"></i>
+          Notificações
+          <span class="badge badge-pill badge-info">{{ cookies.qtd_notificacoes }}</span>
+        </a>
+      </li>
+      <li>
+        <a href="/prestador/configuracoes" class="{{ config }}">
+          <i class="fas fa-cogs mr-2"></i>
+          Configurações da conta
+        </a>
+      </li>
+      <li>
+        <a href="#" id="logoff">
+          <i class="fas fa-sign-out-alt mr-2"></i>Logoff
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal fade" id="modalFoto">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="font-weight-bold mb-0">Enviar foto de perfil</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/prestador/foto" method="POST" id="frmFoto" enctype="multipart/form-data">
+          <div class="form-group col-6 offset-3">
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+              id="img-profile"
+            />
+            <input
+              type="file"
+              class="form-control-file"
+              id="fileFotoPerfil"
+              name="foto-perfil"
+              accept="image/x-png,image/gif,image/jpeg"
+              required
+            />
+            <label for="fileFotoPerfil">Escolher foto de Perfil</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input
+          type="submit"
+          value="Confirmar"
+          class="btn btn-success"
+          form="frmFoto"
+        />
+      </div>
+    </div>
+  </div>
+</div>

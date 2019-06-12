@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-9 px-2">
+          <div class="col-12 bg-white shadow py-3 rounded-lg">
+            <h3 class="font-weight-bold">{{ servico.nome }}</h3>
+            <hr />
+            <p>{{ servico.descricao }}</p>
+          </div>
+
+          <div class="col-12 bg-white shadow py-3 my-3 rounded-lg">
+            <h4 class="font-weight-bold">Realizam esse serviço</h4>
+            <hr />
+            {% if prestadores == false %}
+            <p class="text-muted">Nenhum prestador no momento</p>
+            {% else %}
+            <div class="row justify-content-center">
+              {% for prestador in prestadores %}
+              <div class="col-3 d-flex align-items-stretch">
+                <div class="card">
+                  <img
+                    src="/upload/{{ prestador.foto }}"
+                    class="card-img-top"
+                    style="height: 150px; object-fit: cover; object-position: 0px 30%"
+                  />
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <h5 class="card-title font-weight-bold text-center">
+                      {{ prestador.nome }}
+                    </h5>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-3 px-2">
+          <div class="col bg-white shadow-lg py-2 rounded-lg py-3">
+            <img
+              class="img-thumbnail mb-3"
+              src="/assets/img/servicos/{{ servico.foto }}"
+            />
+            <h3 class="font-weight-bold">R$ {{ servico.media_preco }}</h3>
+            <span class="">Média de Preço*</span>
+            <a
+              href="/cliente/pedido/{{ servico.id }}"
+              class="btn btn-primary btn-block mt-3"
+              data-toggle="modal"
+              data-target="#modal-data"
+            >
+              <i class="fas fa-business-time"></i> Fazer Pedido
+            </a>
+            <hr />
+            <small class="text-muted font-italic">
+              *Preço pode variar de acordo com o prestador
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-data">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-weight-bold">
+              <i class="fas fa-calendar-week"></i> Para quando precisa?
+            </h5>
+          </div>
+          <div class="modal-body">
+            <form action="/cliente/pedido" method="POST" id="frmData">
+              <div class="form-group">
+                <select
+                  class="form-control"
+                  id="sltData"
+                  name="sltData"
+                  required
+                >
+                  <option disabled selected hidden value="">
+                    Selecione uma data
+                  </option>
+                  <option value="1">O mais rápido possível</option>
+                  <option value="2">Até 30 dias</option>
+                  <option value="3">Data específica</option>
+                </select>
+              </div>
+              <div class="form-group" id="group-dtp" style="display: none">
+                <label for="dtpData">Selecione a data</label>
+                <input
+                  type="date"
+                  name="dtpData"
+                  id="dtpData"
+                  class="form-control"
+                />
+              </div>
+              <input type="hidden" name="id_servico" value="{{ servico.id }}" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">
+              Cancelar
+            </button>
+            <input
+              type="submit"
+              value="Fazer pedido"
+              class="btn btn-primary"
+              id="submit"
+              form="frmData"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+    <script>
+      const dtpData = document.getElementById('dtpData')
+      dtpData.min = new Date(new Date().getTime() + 864 * 10 ** 5)
+        .toISOString()
+        .split('T')[0]
+
+      $('#sltData').change(() => {
+        var opcao = $('#sltData option:selected').val()
+        if (opcao == 3) {
+          $('#group-dtp').slideDown()
+          $('#dtpData').attr('required', 'required')
+        } else {
+          $('#group-dtp').slideUp()
+          $('#dtpData').removeAttr('required')
+        }
+      })
+
+      $('form').submit(() => $('#submit').attr('disabled', 'disabled'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand navbar-light bg-white shadow-sm">
+  <div class="navbar-container">
+    <a class="navbar-brand" href="/" style="font-weight: 900;">
+      <img src="/assets/img/logo-2.png" />
+    </a>
+
+    <div class="ml-auto dropdown">
+      <button
+        class="btn btn-outline-primary font-weight-bold dropdown-toggle"
+        data-toggle="dropdown"
+        href="#"
+      >
+        <span class="notifications">{{ cookies.qtd_notificacoes }}</span>
+        {{ cookies.nome }}
+      </button>
+
+      <div class="dropdown-menu dropdown-menu-right">
+        <h5 class="dropdown-item-text font-weight-bold">{{ cookies.nome }}</h5>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/cliente/notificacoes">
+          <i class="fas fa-bell"></i> Notificações
+          <span class="notifications">{{ cookies.qtd_notificacoes }}</span>
+        </a>
+        <a class="dropdown-item" href="/cliente/historico">
+          <i class="fas fa-history"></i> Histórico de Pedidos
+        </a>
+        <a class="dropdown-item" href="/cliente/conta">
+          <i class="fas fa-cogs"></i> Configurações da conta
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" id="logoff">
+          <i class="fas fa-sign-out-alt"></i> Logoff
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

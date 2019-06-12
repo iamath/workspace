@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/assets/css/prestador.css" />
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+  </head>
+  <body>
+    {% include "prestador/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        {% include "prestador/sidebar.njk" %}
+        <div class="col-9 px-2">
+          <div class="col-8 bg-white shadow pt-3 rounded-lg">
+            <h4 class="font-weight-bold">
+              <i class="fas fa-bell mr-2"></i> Notificações
+            </h4>
+            <hr />
+            {% if notificacoes == 404 %}
+            <p class="text-muted pb-3">Nenhuma notificação</p>
+            {% else %}
+            <div class="row">
+              {% for notificacao in notificacoes %}
+              <div class="col-12 mb-3">
+                <div class="card w-100 text-white bg-info">
+                  <div class="d-flex align-items-center py-2">
+                    <div class="col-3">
+                      <span class="h5">{{ notificacao.nome_cliente }}</span>
+                    </div>
+                    <div class="col-6 d-flex justify-content-center">
+                      {{ notificacao.nome_cliente }} aceitou sua proposta!
+                    </div>
+                    <div class="col-3 d-flex justify-content-end">
+                      <a
+                        href="/prestador/notificacao/{{ notificacao.id }}"
+                        class="btn btn-outline-light"
+                      >
+                        <i class="fas fa-eye"></i> Ver
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+    <script src="/assets/js/trocaFoto.js"></script>
+  </body>
+</html>

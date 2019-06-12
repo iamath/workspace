@@ -1,0 +1,41 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+form {
+  width: 500px;
+}
+
+[type='file'] {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  top: 250px;
+  left: 125px;
+  opacity: 0;
+}
+
+[type='file'] + label {
+  background: #007bff;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 10px;
+  text-align: center;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 0;
+}
+[type='file'] + label:hover {
+  background: #0068d8;
+}
+
+#img-profile {
+  width: 211px;
+  height: 211px;
+  margin-bottom: 0;
+  object-fit: cover;
+}

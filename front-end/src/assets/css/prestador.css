@@ -1,0 +1,108 @@
+.main {
+  margin: auto;
+  max-width: 1140px;
+  margin-bottom: 50px;
+}
+
+.profile-pic {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.profile-pic-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  transition: 0.25s;
+  border-radius: 500px;
+  opacity: 0;
+}
+
+.profile-pic-link:hover {
+  background: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.side-menu {
+  list-style: none;
+  padding-left: 0;
+}
+
+.side-menu li {
+  border-bottom: solid 1px #ddd;
+}
+
+.side-menu li:last-child {
+  border-bottom: none;
+}
+
+.side-menu a {
+  background: #fff;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  padding-left: 20px;
+  transition: 0.25s;
+  color: black;
+  font-weight: 500;
+}
+
+#logoff {
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.side-menu a:hover {
+  text-decoration: none;
+  background: #eee;
+}
+
+a.active {
+  background: #ddd;
+}
+
+td,
+th {
+  padding: 5px !important;
+}
+
+[type='file'] {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  top: 250px;
+  left: 125px;
+  opacity: 0;
+}
+
+[type='file'] + label {
+  background: #007bff;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 10px;
+  text-align: center;
+  transition: all 0.3s;
+  width: 100%;
+  margin-top: 0;
+}
+[type='file'] + label:hover {
+  background: #0068d8;
+}
+
+#img-profile {
+  width: 203px;
+  height: 203px;
+  margin-bottom: 0;
+  object-fit: cover;
+}

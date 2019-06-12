@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    {% include "components/default-styles.njk" %}
+    <link rel="stylesheet" href="/fa/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/cliente.css" />
+  </head>
+  <body>
+    {% include "cliente/navbar.njk" %}
+    <div class="main">
+      <div class="row pt-3">
+        <div class="col-8 offset-2 bg-white shadow py-3 rounded-lg">
+          <h4 class="font-weight-bold">
+            <i class="fas fa-bell"></i> Notificações
+          </h4>
+          <hr />
+
+          <div class="row">
+            {% if propostas == 404 %}
+            <p class="ml-4 text-muted">Nenhuma notificação</p>
+            {% else %} {% for proposta in propostas %}
+            <div class="col-12 mb-3">
+              <div class="card w-100 text-white bg-info">
+                <div class="d-flex align-items-center py-2">
+                  <div class="col-3">
+                    <span class="h5">{{ proposta.nome }}</span>
+                  </div>
+                  <div class="col-6 d-flex justify-content-center">
+                    {{ proposta.nome }} lhe enviou uma proposta!
+                  </div>
+                  <div class="col-3 d-flex justify-content-end">
+                    <a
+                      href="/cliente/notificacao/{{ proposta.id }}"
+                      class="btn btn-outline-light"
+                      >Detalhes</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %} {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "components/default-scripts.njk" %} {% include
+    "components/logoff-script.njk" %}
+  </body>
+</html>
